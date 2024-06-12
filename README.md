@@ -1,4 +1,8 @@
 # Automatic-Timetable-Generator
+
+![Copy of  NET](https://github.com/Jared-Steven/Automatic-Timetable-Generator/assets/135201335/f44e5dd0-fc39-47bc-b9ab-ee6405a1d0ce)
+
+
 ## Overview
 
 This project is a Flask-based web application designed to manage and display school timetables. It features the ability to input and store form data, generate class schedules, and present them in a user-friendly, editable HTML table format.
@@ -20,10 +24,9 @@ This project is a Flask-based web application designed to manage and display sch
 
 ## Installation
 
-    Clone the repository:
+    Clone the repository: git clone https://github.com/Jared-Steven/Automatic-Timetable-Generator.git
+    cd entire app
 
-git clone https://github.com/Jared-Steven/Automatic-Timetable-Generator.git
-cd flask-timetable-management
 
 ## Create and activate a virtual environment:
 
@@ -113,6 +116,24 @@ replace_same_teacher(teachers, current_teacher)
 
     View Generated Timetable:
         View the dynamically generated timetable on the table page, with editable cells.
+
+
+## Screenshots Of The Application:
+### Home Page
+
+![Screenshot 2024-04-12 at 03-51-38 Landing Page Example](https://github.com/Jared-Steven/Automatic-Timetable-Generator/assets/135201335/e8ad5810-8a72-4253-aa95-b27df1085c8d)
+
+### Form For Entering Basic Info
+
+![Screenshot 2024-04-12 at 03-52-12 Basic Info](https://github.com/Jared-Steven/Automatic-Timetable-Generator/assets/135201335/702f10ad-ec61-49b0-a4e1-53323989c167)
+
+### Form For Entering Teacher and Class Information
+
+![Screenshot 2024-04-12 at 03-54-55 Teacher and Class Info](https://github.com/Jared-Steven/Automatic-Timetable-Generator/assets/135201335/9b7d2446-cdfb-4f02-9aaa-e4237ed21b5f)
+
+### Generated Time Table For You To Use
+
+![Screenshot 2024-04-15 at 00-04-46 Class Schedule](https://github.com/Jared-Steven/Automatic-Timetable-Generator/assets/135201335/8683c068-c167-4f52-a0ef-f41e5e35c827)
 
 ## License
 

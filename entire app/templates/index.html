@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Example</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #310049;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #ffcc00;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            z-index: 999;
+        }
+        
+        .logo-container {
+	  /* Set the desired size of the logo container */
+	  width: 50px; /* Adjust according to your layout */
+	  height: 50px; /* Adjust according to your layout */
+	  overflow: hidden; /* Ensure that the logo doesn't overflow its container */
+	}
+
+	.logo-container img {
+	  /* Ensure the logo fills its container */
+	  width: 100%;
+	  height: 100%;
+	  /* Apply transition for smooth scaling effect */
+	  transition: transform 0.3s ease;
+	}
+
+	/* On hover, apply zoom effect */
+	.logo-container:hover img {
+	  transform: scale(1.6); /* Adjust the zoom level as needed */
+	}
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        button{
+              background-color: #ffcc00;
+	      color: #310049;
+	      border: none;
+	      padding: 10px 20px;
+	      font-size: 16px;
+	      font-weight: 600;
+	      cursor: pointer;
+	      border-radius: 20px;
+        }  
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px; /* Adjust this value according to your logo size */
+            margin-right: 10px; /* Adjust this value for spacing */
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #ffcc00;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 250px;
+                background-color: #310049;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+                z-index: 998;
+            }
+
+            .nav-links.show {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+        
+        
+        
+		/* Hero Section */
+	    .hero {
+	      background-color: #310049;
+	      padding: 50px;
+	      display: flex;
+	      justify-content: space-between;
+	      align-items: center;
+	    }
+
+	    .hero-content {
+	      color: #ffcc00;
+	    }
+
+	    .hero-content h1 {
+	      font-size: 36px;
+	      font-weight: 700;
+	      margin-bottom: 10px;
+	    }
+
+	    .hero-content p {
+	      font-size: 18px;
+	      font-weight: 400;
+	      margin-bottom: 20px;
+	    }
+
+	    .hero-content button {
+	      background-color: #ffcc00;
+	      color: #310049;
+	      border: none;
+	      padding: 10px 20px;
+	      font-size: 16px;
+	      font-weight: 600;
+	      cursor: pointer;
+	    }
+
+	    .hero-image {
+	      width: 700px;
+	      height: 400px;
+	      background-color: #ffcc00;
+	      justify-content: space-between;
+	      border-radius: 50px;
+	      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	      animation: slideUp 0.5s ease;
+	    }
+
+	    /* Features Section */
+	    .features {
+	      background-color: #310049;
+	      padding: 50px;
+	      display: flex;
+	      flex-direction: column;
+	      align-items: center;
+	    }
+
+	    .features h2 {
+	      color: #ffcc00;
+	      font-size: 24px;
+	      font-weight: 700;
+	      margin-bottom: 30px;
+	    }
+
+	    .feature-card {
+	      display: flex;
+	      justify-content: space-between;
+	      align-items: center;
+	      margin-bottom: 30px;
+	    }
+
+	    .feature-card:nth-child(even) {
+	      flex-direction: row-reverse;
+	    }
+
+	    .feature-card .feature-image {
+	      width: 300px;
+	      height: 300px;
+	      background-color: #ffcc00;
+	      border-radius: 20px;
+	      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	      animation: slideUp 0.5s ease;
+	    }
+
+	    .feature-card .feature-content {
+	      color: #ffcc00;
+	      margin-left: 30px;
+	      margin-right: 30px;
+	    }
+
+	    .feature-card:nth-child(even) .feature-content {
+	      margin-left: 30px;
+	      margin-right: 0;
+	    }
+
+	    /* FAQ Section */
+	    .faq {
+	      background-color: #310049;
+	      padding: 50px;
+	      display: flex;
+	      justify-content: space-between;
+	    }
+
+	    .faq h2 {
+	      color: #ffcc00;
+	      font-size: 24px;
+	      font-weight: 700;
+	      margin-bottom: 30px;
+	    }
+
+	    .accordion {
+	      width: 45%;
+	    }
+
+	    .accordion-item {
+	      background-color: #310049;
+	      border-bottom: 1px solid #ffcc00;
+	      padding: 10px 0;
+	    }
+
+	    .accordion-item h3 {
+	      color: #ffcc00;
+	      font-size: 18px;
+	      font-weight: 600;
+	      margin: 0;
+	      cursor: pointer;
+	    }
+
+	    .accordion-item p {
+	      color: #ffcc00;
+	      font-size: 16px;
+	      font-weight: 400;
+	      margin: 10px 0 0 0;
+	      display: none;
+	    }
+
+	    /* Footer Section */
+	    .footer {
+	      background-color: #310049;
+	      color: #ffcc00;
+	      padding: 20px;
+	      text-align: left;
+	      font-size: 14px;
+	      font-weight: 400;
+	    }
+
+	    /* Animations */
+	    @keyframes slideUp {
+	      0% {
+		transform: translateY(50px);
+		opacity: 0;
+	      }
+	      100% {
+		transform: translateY(0);
+		opacity: 1;
+	      }
+	    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!--<a href="#" class="logo"><img src="logo2.png" alt="Logo"></a>-->
+            <div class="logo-container">
+            <img src="./static/logo2.png" alt="Logo" href="#">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <!--<li><a href="#features">Features</a></li>-->
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button onclick="submitAndGo()" >Start Scheduling :)</button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+	    <div class="hero" style="margin-top: 70px;" id="hero">
+	    <div class="hero-content">
+	      <h1>AttavanAI: Timetables Made Effortless</h1>
+	      <p>Effortlessly Organize Your Time, Every Time</p>
+	      <button onclick="submitAndGo()" >Try Now</button>
+	    </div>
+	    <div>
+	      <img class="hero-image" src="./static/Copy of .NET.gif">
+	    </div>
+	  </div>
+
+	  <!--<div class="features" id="features">
+	    <h2>Our Features</h2>
+	    <div class="feature-card">
+	      <div class="feature-image"></div>
+	      <div class="feature-content">
+		<h3>Feature 1</h3>
+		<p>This is a description of the first feature.</p>
+	      </div>
+	    </div>
+	    <div class="feature-card">
+	      <div class="feature-content">
+		<h3>Feature 2</h3>
+		<p>This is a description of the second feature.</p>
+	      </div>
+	      <div class="feature-image"></div>
+	    </div>
+	  </div> -->
+
+	  <div class="faq" id="faq">
+	    <div class="accordion">
+	      <h2>Frequently Asked Questions</h2>
+	      <div class="accordion-item">
+		<h3>What is AttavanAI?</h3>
+		<p>AttavanAI is an automated timetable generator web application designed to simplify the process of creating schedules for various activities, whether it's for school, work, or personal tasks.</p>
+	      </div>
+	      <div class="accordion-item">
+		<h3>How does AttavanAI work?</h3>
+		<p>AttavanAI utilizes advanced algorithms to analyze your input regarding tasks, priorities, time constraints, and preferences. It then generates optimized schedules that maximize efficiency and minimize conflicts.</p>
+	      </div>
+	      <div class="accordion-item">
+		<h3>Is AttavanAI compatible with different devices?</h3>
+		<p>Yes, AttavanAI is a web-based application accessible from any device with an internet connection. Whether you're using a desktop computer, laptop, tablet, or smartphone, you can easily access and manage your schedules.</p>
+	      </div>
+	    </div>
+	    <div class="accordion">
+	      <div class="accordion-item">
+		<h3>Is my data safe with AttavanAI?</h3>
+		<p>Absolutely. We take data security and privacy seriously. AttavanAI employs industry-standard encryption protocols to ensure that your personal information and schedules remain secure.</p>
+	      </div>
+	      <div class="accordion-item">
+		<h3>Is AttavanAI suitable for group scheduling?</h3>
+		<p>AttavanAI does help you to schedule timetable for multiple classes.</p>
+	      </div>
+	      <div class="accordion-item">
+		<h3>Is AttavanAI easy to use for beginners?</h3>
+		<p>Absolutely! AttavanAI features a user-friendly interface and intuitive controls, making it easy for beginners to navigate and use effectively.</p>
+	      </div>
+	      <div class="accordion-item">
+		<h3>Can I download the time table I generated using AttavanAI</h3>
+		<p>Yes, of course you can download the timetable that you've generate as PDF.</p>
+	      </div>
+	      <!--<div class="accordion-item">
+		<h3>Question 8</h3>
+		<p>Answer to the sixth question.</p>
+	      </div>-->
+	    </div>
+	  </div>
+
+	  <div class="footer">
+	    <p>&copy; 2024 My App. All rights reserved.</p>
+	  </div>
+
+    <script>
+	    // Accordion functionality
+	    const accordionItems = document.querySelectorAll('.accordion-item');
+
+	    accordionItems.forEach(item => {
+	      const header = item.querySelector('h3');
+	      const content = item.querySelector('p');
+
+	      header.addEventListener('click', () => {
+		content.style.display = content.style.display === 'none' ? 'block' : 'none';
+	      });
+	    });
+    </script>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('show');
+        });
+    </script>
+    <script>
+    function submitAndGo() {
+        // Submit the form
+        //document.getElementById("myForm").submit();
+        
+        // Go to the next page
+        window.location.href = "/first"; // Change this to the URL of your next page
+    }
+</script>
+</body>
+</html>

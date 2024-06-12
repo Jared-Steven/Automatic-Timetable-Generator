@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher and Class Info</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #310049;
+        color: #ffcc00;
+    }
+    
+    header {
+            background-color: #310049;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #ffcc00;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            z-index: 999;
+        }
+        
+        .logo-container {
+	  /* Set the desired size of the logo container */
+	  width: 50px; /* Adjust according to your layout */
+	  height: 50px; /* Adjust according to your layout */
+	  overflow: hidden; /* Ensure that the logo doesn't overflow its container */
+	}
+
+	.logo-container img {
+	  /* Ensure the logo fills its container */
+	  width: 100%;
+	  height: 100%;
+	  /* Apply transition for smooth scaling effect */
+	  transition: transform 0.3s ease;
+	}
+
+	/* On hover, apply zoom effect */
+	.logo-container:hover img {
+	  transform: scale(1.6); /* Adjust the zoom level as needed */
+	}
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        button{
+              background-color: #ffcc00;
+	      color: #310049;
+	      border: none;
+	      padding: 10px 20px;
+	      font-size: 16px;
+	      font-weight: 600;
+	      cursor: pointer;
+	      border-radius: 20px;
+        }  
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px; /* Adjust this value according to your logo size */
+            margin-right: 10px; /* Adjust this value for spacing */
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #ffcc00;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 250px;
+                background-color: #310049;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+                z-index: 998;
+            }
+
+            .nav-links.show {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+    
+    .container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #310049;
+        box-shadow: 0 0 10px #ffcc00/*rgba(0, 0, 0, 0.1)*/;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="time"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    /* Footer Section */
+    .footer {
+	  background-color: #310049;
+	  color: #ffcc00;
+	  padding: 10px;
+	  text-align: left;
+	  font-size: 14px;
+	  font-weight: 400;
+    }
+</style>
+</head>
+<body>
+<header>
+        <nav class="navbar">
+            <!--<a href="#" class="logo"><img src="logo2.png" alt="Logo"></a>-->
+            <div class="logo-container">
+            <img src="./static/logo2.png" alt="Logo" href="#">
+            </div>
+
+            <!--<ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button>Start Scheduling :)</button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>-->
+        </nav>
+</header>
+<div class="container" style="margin-top: 110px;">
+    <div class="class-container">
+      <h1>Enter Class and Teachers Info Here</h1>
+      <div id="classSection">
+        <!-- Class Section will be populated dynamically -->
+      </div>
+      <button type="button" class="btn btn-primary add-class">Add Class</button>
+      <button type="button" class="btn btn-success" id="submitBtn">Submit</button>
+      <button type="button" class="btn btn-success" onclick="submitAndGo()">Next</button> <!-- changed to button type="button" -->
+    </div>
+  </div>
+  <!--<div class="footer">
+       <p>&copy; 2024 My App. All rights reserved.</p>
+ </div>-->
+  <!-- Templates -->
+  <template id="classTemplate">
+    <div class="class">
+      <h2>Class</h2>
+      <form class="class-form">
+        <div class="form-group">
+          <label for="className">Class Name:</label>
+          <input type="text" class="form-control" name="className" placeholder="Enter class name" required>
+        </div>
+
+        <div class="teacher-container">
+          <!-- Teacher Section will be populated dynamically -->
+        </div>
+        <button type="button" class="btn btn-primary add-teacher">Add Teacher</button>
+        <button type="button" class="btn btn-danger remove-class">Remove Class</button>
+      </form>
+      <hr>
+    </div>
+  </template>
+
+  <template id="teacherTemplate">
+    <div class="teacher">
+      <h3>Teacher</h3>
+      <div class="form-group">
+        <label for="teacherName">Name:</label>
+        <input type="text" class="form-control" name="teacherName" placeholder="Enter teacher name" required>
+      </div>
+      <div class="form-group">
+        <label for="teacherEmail">Email:</label>
+        <input type="email" class="form-control" name="teacherEmail" placeholder="Enter teacher email" required>
+      </div>
+      <div class="subject-container">
+        <!-- Subject Section will be populated dynamically -->
+      </div>
+      <button type="button" class="btn btn-primary add-subject">Add Subject</button>
+      <button type="button" class="btn btn-danger remove-teacher">Remove Teacher</button>
+    </div>
+  </template>
+
+  <template id="subjectTemplate">
+    <div class="subject">
+      <div class="form-group">
+        <label for="subjectName">Subject Name:</label>
+        <input type="text" class="form-control" name="subjectName" placeholder="Enter subject name" required>
+      </div>
+      <button type="button" class="btn btn-danger remove-subject">Remove</button>
+    </div>
+  </template>
+
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function() {
+  // Add Class
+  $('.add-class').click(function() {
+    var classTemplate = $('#classTemplate').html();
+    $('#classSection').append(classTemplate);
+  });
+
+  // Remove Class
+  $('body').on('click', '.remove-class', function() {
+    $(this).closest('.class').remove();
+  });
+
+  // Add Teacher
+  $('body').on('click', '.add-teacher', function() {
+    var teacherTemplate = $('#teacherTemplate').html();
+    $(this).closest('.class').find('.teacher-container').append(teacherTemplate);
+  });
+
+  // Remove Teacher
+  $('body').on('click', '.remove-teacher', function() {
+    $(this).closest('.teacher').remove();
+  });
+
+  // Add Subject
+  $('body').on('click', '.add-subject', function() {
+    var subjectTemplate = $('#subjectTemplate').html();
+    $(this).closest('.teacher').find('.subject-container').append(subjectTemplate);
+  });
+
+  // Remove Subject
+  $('body').on('click', '.remove-subject', function() {
+    $(this).closest('.subject').remove();
+  });
+
+  // Form Submission
+  $('#submitBtn').click(function() {
+    var formData = [];
+    $('.class').each(function() {
+      var classData = {
+        className: $(this).find('[name="className"]').val(),
+        teachers: []
+      };
+      $(this).find('.teacher').each(function() {
+        var teacherData = {
+          name: $(this).find('[name="teacherName"]').val(),
+          email: $(this).find('[name="teacherEmail"]').val(),
+          subjects: []
+        };
+        $(this).find('.subject').each(function() {
+          teacherData.subjects.push($(this).find('[name="subjectName"]').val());
+        });
+        classData.teachers.push(teacherData);
+      });
+      formData.push(classData);
+    });
+
+    // Sending form data to Flask API endpoint
+    $.post('/submit_form', {formData: JSON.stringify(formData)}, function(response) {
+      console.log(response);
+    });
+  });
+});
+
+</script>
+<script>
+    function submitAndGo() {
+        // Submit the form
+        //document.getElementById("myForm").submit();
+        
+        // Go to the next page
+        window.location.href = "/table"; // Change this to the URL of your next page
+    }
+</script>
+</body>
+</html>

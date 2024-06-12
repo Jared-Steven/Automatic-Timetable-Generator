@@ -1,0 +1,369 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Schedule</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 20px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffe161;
+    }
+
+    .container {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slide-in {
+      animation: slideInLeft 0.5s forwards;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% for table_data in tables_data %}
+    <h3>{{ table_data['class'] }}</h3>
+    <div class="table-responsive">
+      {{ table_data['table_data'] | safe }}
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Schedule</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <style>
+    body {
+      margin: 20px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #310049;
+      color: #ffcc00;
+    }
+    
+    header {
+            background-color: #310049;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #ffcc00;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            z-index: 999;
+        }
+        
+        .logo-container {
+	  /* Set the desired size of the logo container */
+	  width: 50px; /* Adjust according to your layout */
+	  height: 50px; /* Adjust according to your layout */
+	  overflow: hidden; /* Ensure that the logo doesn't overflow its container */
+	}
+
+	.logo-container img {
+	  /* Ensure the logo fills its container */
+	  width: 100%;
+	  height: 100%;
+	  /* Apply transition for smooth scaling effect */
+	  transition: transform 0.3s ease;
+	}
+
+	/* On hover, apply zoom effect */
+	.logo-container:hover img {
+	  transform: scale(1.6); /* Adjust the zoom level as needed */
+	}
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        button{
+              background-color: #ffcc00;
+	      color: #310049;
+	      border: none;
+	      padding: 10px 20px;
+	      font-size: 16px;
+	      font-weight: 600;
+	      cursor: pointer;
+	      border-radius: 20px;
+        }  
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px; /* Adjust this value according to your logo size */
+            margin-right: 10px; /* Adjust this value for spacing */
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffcc00;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #ffcc00;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 250px;
+                background-color: #310049;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+                z-index: 998;
+            }
+
+            .nav-links.show {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+    .container {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ffcc00;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slide-in {
+      animation: slideInLeft 0.5s forwards;
+    }
+    
+    /* Footer Section */
+    .footer {
+	  background-color: #310049;
+	  color: #ffcc00;
+	  padding: 10px;
+	  text-align: left;
+	  font-size: 14px;
+	  font-weight: 400;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+        <nav class="navbar">
+            <!--<a href="#" class="logo"><img src="logo2.png" alt="Logo"></a>-->
+            <div class="logo-container">
+            <img src="./static/logo2.png" alt="Logo" href="#">
+            </div>
+
+            <!--<ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>-->
+            <button onclick="submitAndGo()">Go Back :)</button>
+        </nav>
+    </header>
+  <div class="container" id="tab" style="margin-top: 110px;">
+    {% for table_data in tables_data %}
+    <h3>{{ table_data['class'] }}</h3>
+    <div class="table-responsive">
+      {{ table_data['table_data'] | safe }}
+    </div>
+    {% endfor %}
+  </div>
+  <center><div>
+  <button id="editBtn">Edit</button>
+  <button id="saveBtn">Save</button>
+  <button onclick="refreshPage()">Regenerate</button>
+  <button onclick="printDiv('tab','Title')">Save As PDF</button>
+  </div></center>
+  <div class="footer">
+       <p>&copy; 2024 My App. All rights reserved.</p>
+  </div>
+  <script>
+	    function printDiv(divId, title) {
+
+	  let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+	  mywindow.document.write(`<html><head><title>${title}</title>`);
+	  mywindow.document.write('</head><body >');
+	  mywindow.document.write(document.getElementById(divId).innerHTML);
+	  mywindow.document.write('</body></html>');
+
+	  mywindow.document.close(); // necessary for IE >= 10
+	  mywindow.focus(); // necessary for IE >= 10*/
+
+	  mywindow.print();
+	  mywindow.close();
+
+	  return true;
+	}
+  </script>
+
+  <script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  const editBtn = document.getElementById("editBtn");
+	  const saveBtn = document.getElementById("saveBtn");
+	  const cells = document.querySelectorAll("[contenteditable=true]");
+
+	  editBtn.addEventListener("click", function() {
+	    cells.forEach(cell => {
+	      cell.contentEditable = "true";
+	    });
+	    editBtn.style.display = "none";
+	    saveBtn.style.display = "inline-block";
+	  });
+
+	  saveBtn.addEventListener("click", function() {
+	    const data = [];
+	    cells.forEach(cell => {
+	      data.push(cell.innerText);
+	    });
+	    const jsonData = JSON.stringify(data);
+
+	    // Here you can save jsonData to a separate JSON file or send it to a server using AJAX
+	    console.log(jsonData);
+
+	    cells.forEach(cell => {
+	      cell.contentEditable = "false";
+	    });
+	    editBtn.style.display = "inline-block";
+	    saveBtn.style.display = "none";
+	  });
+	});
+
+  </script>
+  <script>
+	// JavaScript function to refresh the page
+	function refreshPage() {
+	    location.reload(); // Reloads the current document
+	}
+ </script>
+ <script>
+    function submitAndGo() {
+        // Submit the form
+        //document.getElementById("myForm").submit();
+        
+        // Go to the next page
+        window.location.href = "/"; // Change this to the URL of your next page
+    }
+</script>
+</body>
+</html>
+
+
